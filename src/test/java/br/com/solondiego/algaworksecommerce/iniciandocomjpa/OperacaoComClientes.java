@@ -1,37 +1,42 @@
 package br.com.solondiego.algaworksecommerce.iniciandocomjpa;
 
+import br.com.solondiego.algaworksecommerce.EntityManagerTest;
 import br.com.solondiego.algaworksecommerce.model.Cliente;
+import br.com.solondiego.algaworksecommerce.model.SexoCliente;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-public class OperacaoComClientes extends EntityManagerTest{
+public class OperacaoComClientes extends EntityManagerTest {
 
     @Test
-    public void buscarCliente(){
-       Cliente cliente =  entityManager.find(Cliente.class, 1);
-
-
-        Assertions.assertEquals("João Lucas Gomes Moreira", cliente.getNome());
-    }
-
-    @Test
-    public void atualizarCliente(){
+    public void buscarCliente() {
 
         Cliente cliente = entityManager.find(Cliente.class, 1);
 
-        entityManager.getTransaction().begin();
-        cliente.setNome("João Lucas Gomes Moreira");
-//        entityManager.merge(cliente);
-        entityManager.getTransaction().commit();
+        Assertions.assertEquals("João Lucas Gomes Moreira", cliente.getNome());
+
     }
 
     @Test
-    public void inserirCliente(){
+    public void atualizarCliente() {
+
+        Cliente cliente = entityManager.find(Cliente.class, 1);
+
+        cliente.setNome("João Lucas Gomes Moreira");
+
+        entityManager.getTransaction().begin();
+        entityManager.merge(cliente);
+        entityManager.getTransaction().commit();
+
+    }
+
+    @Test
+    public void inserirCliente() {
 
         Cliente cliente = new Cliente();
 
-        cliente.setId(3);
         cliente.setNome("Maria Alícia Gomes Moreira");
+        cliente.setSexo(SexoCliente.FEMININO);
 
         entityManager.getTransaction().begin();
         entityManager.persist(cliente);
@@ -39,7 +44,8 @@ public class OperacaoComClientes extends EntityManagerTest{
 
         entityManager.clear();
 
-        Cliente clienteVerificacao = entityManager.find(Cliente.class, 3);
+        Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
         Assertions.assertNotNull(clienteVerificacao);
+
     }
 }

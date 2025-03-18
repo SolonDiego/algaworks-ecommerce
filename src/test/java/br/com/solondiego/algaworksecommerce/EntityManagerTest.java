@@ -1,4 +1,4 @@
-package br.com.solondiego.algaworksecommerce.iniciandocomjpa;
+package br.com.solondiego.algaworksecommerce;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;

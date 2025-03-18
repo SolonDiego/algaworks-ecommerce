@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@EqualsAndHashCode (onlyExplicitlyIncluded = true)
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
 @Table(name = "categoria")
 public class Categoria {

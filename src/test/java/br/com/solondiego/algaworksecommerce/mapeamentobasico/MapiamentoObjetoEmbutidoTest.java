@@ -1,6 +1,6 @@
 package br.com.solondiego.algaworksecommerce.mapeamentobasico;
 
-import br.com.solondiego.algaworksecommerce.iniciandocomjpa.EntityManagerTest;
+import br.com.solondiego.algaworksecommerce.EntityManagerTest;
 import br.com.solondiego.algaworksecommerce.model.EnderecoEntregaPedido;
 import br.com.solondiego.algaworksecommerce.model.Pedido;
 import br.com.solondiego.algaworksecommerce.model.StatusPedido;
@@ -27,7 +27,6 @@ public class MapiamentoObjetoEmbutidoTest extends EntityManagerTest {
 
         Pedido pedido = new Pedido();
 
-        pedido.setId(1);
         pedido.setDataPedido(LocalDateTime.now());
         pedido.setDataConclusao(null);
         pedido.setNotaFiscalId(null);

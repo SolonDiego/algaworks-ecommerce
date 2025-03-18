@@ -1,6 +1,6 @@
 package br.com.solondiego.algaworksecommerce.mapeamentobasico;
 
-import br.com.solondiego.algaworksecommerce.iniciandocomjpa.EntityManagerTest;
+import br.com.solondiego.algaworksecommerce.EntityManagerTest;
 import br.com.solondiego.algaworksecommerce.model.Categoria;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class EstrategiaChavePrimaria extends EntityManagerTest {
 
     @Test
-    public void testarEstrategiaChave(){
+    public void testarEstrategiaChave() {
 
         Categoria categoria = new Categoria();
 
