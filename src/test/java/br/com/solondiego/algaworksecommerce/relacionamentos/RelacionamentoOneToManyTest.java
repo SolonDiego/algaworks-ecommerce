@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class RelacionamentoManyToOneTest extends EntityManagerTest {
+public class RelacionamentoOneToManyTest extends EntityManagerTest {
 
     @Test
     public void verificarRelacionamento(){
@@ -28,8 +28,8 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        Pedido pedidoVerificacao = entityManager.find(Pedido.class,pedido.getId());
-        Assertions.assertNotNull(pedidoVerificacao.getCliente());
+        Cliente clienteVerificacao = entityManager.find(Cliente.class,cliente.getId());
+        Assertions.assertFalse(clienteVerificacao.getPedidos().isEmpty());
 
     }
 
@@ -41,7 +41,7 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         Pedido pedido = new Pedido();
         pedido.setStatus(StatusPedido.AGUARDANDO);
-        pedido.setDataConclusao(LocalDateTime.now());
+        pedido.setDataPedido(LocalDateTime.now());
         pedido.setTotal(BigDecimal.TEN);
         pedido.setCliente(cliente);
 
@@ -58,9 +58,8 @@ public class RelacionamentoManyToOneTest extends EntityManagerTest {
 
         entityManager.clear();
 
-        ItemPedido itemPedidoVerificacao = entityManager.find(ItemPedido.class, itemPedido.getId());
-        Assertions.assertNotNull(itemPedidoVerificacao.getPedido());
-        Assertions.assertNotNull(itemPedidoVerificacao.getProduto());
+        Pedido pedidoVerificação = entityManager.find(Pedido.class, pedido.getId());
+        Assertions.assertFalse(pedidoVerificação.getItemPedidos().isEmpty());
 
     }
 

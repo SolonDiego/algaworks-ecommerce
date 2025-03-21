@@ -1,6 +1,5 @@
 package br.com.solondiego.algaworksecommerce.model;
 
-
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -8,6 +7,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -44,5 +44,8 @@ public class Pedido {
 
     @Embedded
     private EnderecoEntregaPedido endereco;
+
+    @OneToMany(mappedBy = "pedido")
+    private List<ItemPedido> itemPedidos;
 
 }
